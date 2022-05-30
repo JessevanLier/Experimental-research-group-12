@@ -61,6 +61,19 @@ study_2 <- read_sav("./Idea 2/Exp+Res+2022+Idea+2+-+premium+vs+private+label_May
 
 summary(study_1)
 
+#calculate Cronbachs Alpha for reliability
+library(psych)
+
+dataset4ca_study1 <- dataset1 %>% 
+  select(rank_b_hm_1, rank_b_tg_1, rank_c_hm_1, rank_c_tg_1)
+
+dataset4ca_study1$rank_b_hm_1[is.na(dataset4ca_study1$rank_b_hm_1)] <- 0
+dataset4ca_study1$rank_b_tg_1[is.na(dataset4ca_study1$rank_b_tg_1)] <- 0
+dataset4ca_study1$rank_c_hm_1[is.na(dataset4ca_study1$rank_c_hm_1)] <- 0
+dataset4ca_study1$rank_c_tg_1[is.na(dataset4ca_study1$rank_c_tg_1)] <- 0
+
+alpha(dataset4ca_study1, check.keys=TRUE)
+
 ## Create factors for each condition
 
 study_1$FL_14_DO_buy_togo[is.na(study_1$FL_14_DO_buy_togo)] <- 0
