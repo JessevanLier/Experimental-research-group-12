@@ -25,6 +25,14 @@ dataset2 = read_sav(path)
 
 
 ```{r}
+#calculate Cronbachs Alpha for reliability
+library(psych)
+
+dataset4ca_study2 <- dataset2 %>% 
+  select(relative_rank_1, WTP_self, WTP_others)
+
+alpha(dataset4ca_study2)
+
 #Filter Dataset idea 2
 
 #Compute WTP average
